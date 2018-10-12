@@ -34,9 +34,11 @@ define('APPKEY', 'ruAkywbBi06DvBorF012DA');
 define('APPID', 'Z6wmlQS1Qq6Zp3IJiLWnpA');
 define('MASTERSECRET', 'U7GqGDkaGe6HSmCyHKebS9');
 define('HOST', 'http://sdk.open.api.igexin.com/apiex.htm');
-define('CID', '8d9faec981cb393af8be510d42e59978');
+//define('CID', '8d9faec981cb393af8be510d42e59978');
+define('CID', '464e7f023fe30758391da28889d3b0c3');
 define('DT', '');
-define('CID1', '8d9faec981cb393af8be510d42e59978');
+//define('CID1', '8d9faec981cb393af8be510d42e59978');
+define('CID1', '464e7f023fe30758391da28889d3b0c3');
 define('DT1', '');
 define('groupName', '');
 
@@ -65,7 +67,7 @@ define("ALIAS", "ALIAS");
 
 echo "Start" . PHP_EOL;
 pushMessageToSingle();
-echo "Done" . PHP_EOL;
+echo PHP_EOL . "Done" . PHP_EOL;
 //pushMessageByTag();
 //pushMessageToSingleBatch();
 //pushMessageToList();
@@ -293,10 +295,10 @@ function pushMessageToSingle()
 
 //    	$template = IGtNotyPopLoadTemplateDemo();
 //    	$template = IGtLinkTemplateDemo();
-//    	$template = IGtNotificationTemplateDemo();
+//    $template = IGtNotificationTemplateDemo();
     $template = IGtTransmissionTemplateDemo();
-    $template = SmsDemo();
-    //个推信息体
+//    $template = SmsDemo();
+    //TEST信息体
     $message = new IGtSingleMessage();
 
     $message->set_isOffline(true);//是否离线
@@ -368,7 +370,7 @@ function pushMessageToSingleBatch()
     $templateNoti = IGtNotificationTemplateDemo();
     //$template = IGtTransmissionTemplateDemo();
 
-    //个推信息体
+    //TEST信息体
     $messageLink = new IGtSingleMessage();
     $messageLink->set_isOffline(true);//是否离线
     $messageLink->set_offlineExpireTime(12 * 1000 * 3600);//离线时间
@@ -380,7 +382,7 @@ function pushMessageToSingleBatch()
     $targetLink->set_clientId(CID);
     $batch->add($messageLink, $targetLink);
 
-    //个推信息体
+    //TEST信息体
     $messageNoti = new IGtSingleMessage();
     $messageNoti->set_isOffline(true);//是否离线
     $messageNoti->set_offlineExpireTime(12 * 1000 * 3600);//离线时间
@@ -424,7 +426,7 @@ function pushMessageToList()
     //$template = IGtLinkTemplateDemo();
     //$template = IGtNotificationTemplateDemo();
     $template = IGtTransmissionTemplateDemo();
-    //个推信息体
+    //TEST信息体
     $message = new IGtListMessage();
     $message->set_isOffline(true);//是否离线
     $message->set_offlineExpireTime(3600 * 12 * 1000);//离线时间
@@ -454,7 +456,7 @@ function pushMessageToApp()
 {
     $igt = new IGeTui(HOST, APPKEY, MASTERSECRET);
     $template = IGtLinkTemplateDemo();
-    //个推信息体
+    //TEST信息体
     //基于应用消息体
     $message = new IGtAppMessage();
     $message->set_isOffline(true);
@@ -493,8 +495,8 @@ function IGtNotyPopLoadTemplateDemo()
     $template->set_appId(APPID);//应用appid
     $template->set_appkey(APPKEY);//应用appkey
     //通知栏
-    $template->set_notyTitle("个推");//通知栏标题
-    $template->set_notyContent("个推最新版点击下载");//通知栏内容
+    $template->set_notyTitle("TEST");//通知栏标题
+    $template->set_notyContent("TEST最新版点击下载");//通知栏内容
     $template->set_notyIcon("");//通知栏logo
     $template->set_isBelled(true);//是否响铃
     $template->set_isVibrationed(true);//是否震动
@@ -540,8 +542,8 @@ function IGtNotificationTemplateDemo()
     $template->set_appkey(APPKEY);//应用appkey
     $template->set_transmissionType(1);//透传消息类型
     $template->set_transmissionContent("测试离线");//透传内容
-    $template->set_title("个推");//通知栏标题
-    $template->set_text("个推最新版点击下载");//通知栏内容
+    $template->set_title("盖世竞猜");//通知栏标题
+    $template->set_text("盖世竞猜最新版点击下载");//通知栏内容
     $template->set_logo("http://wwww.igetui.com/logo.png");//通知栏logo
     $template->set_isRing(true);//是否响铃
     $template->set_isVibrate(true);//是否震动
@@ -623,7 +625,7 @@ function pushMessageByTag()
 {
     $igt = new IGeTui(HOST, APPKEY, MASTERSECRET);
     $template = IGtLinkTemplateDemo();
-    //个推信息体
+    //TEST信息体
     //基于应用消息体
     $message = new IGtTagMessage();
     $message->set_isOffline(true);
