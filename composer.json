@@ -1,6 +1,6 @@
 {
-  "name": "snailzed/php_getui_sdk_autoload",
-  "description": "Add namespace,Getui php SDK",
+  "name": "snailzed/php_getui_sdk",
+  "description": "php getui sdk for autoload class",
   "type": "library",
   "license": "MIT",
   "authors": [
@@ -10,7 +10,7 @@
     }
   ],
   "require": {
-    "php": ">=7.0"
+    "php": ">=5.6.0"
   },
   "autoload": {
     "psr-4": {
