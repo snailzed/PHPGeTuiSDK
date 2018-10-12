@@ -228,7 +228,7 @@ class IGt
         empty($utagList) ?: $cdt->addCondition2(AppConditions::TAG, $utagList);
 
         $message->set_appIdList($appIdList);
-        $message->set_conditions($cdt->getCondition());
+        $message->set_conditions($cdt);
         try
         {
             $rep = $igt->pushMessageToApp($message, $taskGroupName);
@@ -280,7 +280,7 @@ class IGt
         empty($utagList) ?: $cdt->addCondition2(AppConditions::TAG, $utagList);
 
         $message->set_appIdList($appIdList);
-        $message->set_conditions($cdt->getCondition());
+        $message->set_conditions($cdt);
 
         try
         {

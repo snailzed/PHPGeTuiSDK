@@ -71,7 +71,7 @@ class DictionaryAlertMsg implements ApnMsg
         {
             $alertMap["subtitle"] = $this->subtitle;
         }
-        if (sizeof($this->subtitleLocArgs) > 0)
+        if (is_array($this->subtitleLocArgs) && sizeof($this->subtitleLocArgs) > 0)
         {
             $alertMap["subtitle-loc-args"] = $this->subtitleLocArgs;
         }

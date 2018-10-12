@@ -34,11 +34,11 @@ define('APPKEY', 'ruAkywbBi06DvBorF012DA');
 define('APPID', 'Z6wmlQS1Qq6Zp3IJiLWnpA');
 define('MASTERSECRET', 'U7GqGDkaGe6HSmCyHKebS9');
 define('HOST', 'http://sdk.open.api.igexin.com/apiex.htm');
-//define('CID', '8d9faec981cb393af8be510d42e59978');
-define('CID', '464e7f023fe30758391da28889d3b0c3');
+define('CID', '8d9faec981cb393af8be510d42e59978');
+//define('CID', '464e7f023fe30758391da28889d3b0c3');
 define('DT', '');
-//define('CID1', '8d9faec981cb393af8be510d42e59978');
-define('CID1', '464e7f023fe30758391da28889d3b0c3');
+define('CID1', '8d9faec981cb393af8be510d42e59978');
+//define('CID1', '464e7f023fe30758391da28889d3b0c3');
 define('DT1', '');
 define('groupName', '');
 
@@ -66,7 +66,8 @@ define("ALIAS", "ALIAS");
 //unbindCidPnDemo();
 
 echo "Start" . PHP_EOL;
-pushMessageToSingle();
+//pushMessageToSingle();
+pushMessageToApp();
 echo PHP_EOL . "Done" . PHP_EOL;
 //pushMessageByTag();
 //pushMessageToSingleBatch();
@@ -295,8 +296,8 @@ function pushMessageToSingle()
 
 //    	$template = IGtNotyPopLoadTemplateDemo();
 //    	$template = IGtLinkTemplateDemo();
-//    $template = IGtNotificationTemplateDemo();
-    $template = IGtTransmissionTemplateDemo();
+    $template = IGtNotificationTemplateDemo();
+//    $template = IGtTransmissionTemplateDemo();
 //    $template = SmsDemo();
     //TEST信息体
     $message = new IGtSingleMessage();
@@ -455,7 +456,8 @@ function pushMessageToList()
 function pushMessageToApp()
 {
     $igt = new IGeTui(HOST, APPKEY, MASTERSECRET);
-    $template = IGtLinkTemplateDemo();
+//    $template = IGtLinkTemplateDemo();
+    $template = IGtNotificationTemplateDemo();
     //TEST信息体
     //基于应用消息体
     $message = new IGtAppMessage();
@@ -465,15 +467,15 @@ function pushMessageToApp()
 //    $message->setPushTime("201808011537");
     $appIdList = array(APPID);
     $phoneTypeList = array('ANDROID');
-    $provinceList = array('浙江');
-    $tagList = array('中文');
-    $age = array("0000", "0010");
+//    $provinceList = array('浙江');
+//    $tagList = array('中文');
+//    $age = array("0000", "0010");
 
 
     $cdt = new AppConditions();
     $cdt->addCondition(AppConditions::PHONE_TYPE, $phoneTypeList);
-    $cdt->addCondition(AppConditions::REGION, $provinceList);
-    $cdt->addCondition(AppConditions::TAG, $tagList);
+//    $cdt->addCondition(AppConditions::REGION, $provinceList);
+//    $cdt->addCondition(AppConditions::TAG, $tagList);
 //    $cdt->addCondition("age", $age);
 
     $message->set_appIdList($appIdList);

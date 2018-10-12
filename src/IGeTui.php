@@ -6,24 +6,66 @@
 namespace GeTui;
 
 
+use GeTui\igetui\IGtListMessage;
+use GeTui\igetui\IGtTagMessage;
 use GeTui\igetui\utils\ApiUrlRespectUtils;
 use GeTui\igetui\utils\GTConfig;
 use GeTui\igetui\utils\HttpManager;
 use GeTui\igetui\utils\LangUtils;
 use \Exception;
 
+/**
+ * Class IGeTui
+ *
+ * @package GeTui
+ */
 Class IGeTui
 {
+    /**
+     * @var
+     */
     var $appkey; //第三方 标识
+    /**
+     * @var
+     */
     var $masterSecret; //第三方 密钥
+    /**
+     * @var string
+     */
     var $format = "json"; //默认为 json 格式
+    /**
+     * @var string
+     */
     var $host = "";
+    /**
+     * @var bool
+     */
     var $needDetails = false;
+    /**
+     * @var array
+     */
     static $appkeyUrlList = array();
+    /**
+     * @var array
+     */
     var $domainUrlList = array();
+    /**
+     * @var bool|null
+     */
     var $useSSL = NULL; //是否使用https连接 以该标志为准
+    /**
+     * @var
+     */
     var $authToken;
 
+    /**
+     * IGeTui constructor.
+     *
+     * @param      $domainUrl
+     * @param      $appkey
+     * @param      $masterSecret
+     * @param null $ssl
+     */
     public function __construct($domainUrl, $appkey, $masterSecret, $ssl = NULL)
     {
         $this->appkey = $appkey;
@@ -48,6 +90,12 @@ Class IGeTui
         $this->initOSDomain(null);
     }
 
+    /**
+     * @param $hosts
+     *
+     * @return mixed|string
+     * @throws \Exception
+     */
     private function initOSDomain($hosts)
     {
         if ($hosts == null || count($hosts) == 0)
@@ -67,6 +115,13 @@ Class IGeTui
         return $this->host;
     }
 
+    /**
+     * @param $domainUrlList
+     * @param $appkey
+     *
+     * @return null
+     * @throws \Exception
+     */
     public function getOSPushDomainUrlList($domainUrlList, $appkey)
     {
         $urlList = null;
@@ -142,6 +197,10 @@ Class IGeTui
         return $rep;
     }
 
+    /**
+     * @return bool
+     * @throws \GeTui\exception\RequestException
+     */
     public function connect()
     {
         $timeStamp = $this->micro_time();
@@ -168,6 +227,9 @@ Class IGeTui
         throw new \Exception("appKey Or masterSecret is Auth Failed");
     }
 
+    /**
+     * @throws \GeTui\exception\RequestException
+     */
     public function close()
     {
         $params = array();
@@ -197,6 +259,13 @@ Class IGeTui
     }
 
 
+    /**
+     * @param      $message
+     * @param      $target
+     * @param null $requestId
+     *
+     * @return array
+     */
     function getSingleMessagePostData($message, $target, $requestId = null)
     {
         $params = array();
@@ -225,6 +294,13 @@ Class IGeTui
     }
 
 
+    /**
+     * @param      $message
+     * @param null $taskGroupName
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     public function getContentId($message, $taskGroupName = null)
     {
         return $this->getListAppContentId($message, $taskGroupName);
@@ -272,6 +348,13 @@ Class IGeTui
         return $this->httpPostJSON($this->host, $params);
     }
 
+    /**
+     * @param $appId
+     * @param $cidList
+     *
+     * @return mixed|null
+     * @throws \Exception
+     */
     public function addCidListToBlk($appId, $cidList)
     {
 
@@ -279,6 +362,13 @@ Class IGeTui
 
     }
 
+    /**
+     * @param $appId
+     * @param $cidList
+     *
+     * @return mixed|null
+     * @throws \Exception
+     */
     public function restoreCidListFromBlk($appId, $cidList)
     {
 
@@ -344,6 +434,12 @@ Class IGeTui
         return $this->httpPostJSON($this->host, $params, true);
     }
 
+    /**
+     * @param $contentId
+     *
+     * @return bool
+     * @throws \GeTui\exception\RequestException
+     */
     public function stop($contentId)
     {
         $params = array();
@@ -358,6 +454,13 @@ Class IGeTui
         return false;
     }
 
+    /**
+     * @param $appId
+     * @param $clientId
+     *
+     * @return mixed|null
+     * @throws \GeTui\exception\RequestException
+     */
     public function getClientIdStatus($appId, $clientId)
     {
         $params = array();
@@ -368,6 +471,14 @@ Class IGeTui
         return $this->httpPostJSON($this->host, $params);
     }
 
+    /**
+     * @param $appId
+     * @param $clientId
+     * @param $tags
+     *
+     * @return mixed|null
+     * @throws \GeTui\exception\RequestException
+     */
     public function setClientTag($appId, $clientId, $tags)
     {
         $params = array();
@@ -403,6 +514,13 @@ Class IGeTui
 
     }
 
+    /**
+     * @param $badge
+     * @param $appid
+     * @param $cidList
+     *
+     * @return mixed|null
+     */
     public function setBadgeForCID($badge, $appid, $cidList)
     {
 
@@ -410,6 +528,13 @@ Class IGeTui
 
     }
 
+    /**
+     * @param $badge
+     * @param $appid
+     * @param $deviceTokenList
+     *
+     * @return mixed|null
+     */
     public function setBadgeForDeviceToken($badge, $appid, $deviceTokenList)
     {
 
@@ -417,6 +542,13 @@ Class IGeTui
 
     }
 
+    /**
+     * @param      $message
+     * @param null $taskGroupName
+     *
+     * @return mixed|null
+     * @throws \GeTui\exception\RequestException
+     */
     public function pushMessageToApp($message, $taskGroupName = null)
     {
         $contentId = $this->getListAppContentId($message, $taskGroupName);
@@ -428,6 +560,13 @@ Class IGeTui
         return $this->httpPostJSON($this->host, $params);
     }
 
+    /**
+     * @param      $message
+     * @param null $taskGroupName
+     *
+     * @return mixed
+     * @throws \GeTui\exception\RequestException
+     */
     private function getListAppContentId($message, $taskGroupName = null)
     {
         $params = array();
@@ -489,11 +628,22 @@ Class IGeTui
         }
     }
 
+    /**
+     * @return \GeTui\IGtBatch
+     */
     public function getBatch()
     {
         return new IGtBatch($this->appkey, $this);
     }
 
+    /**
+     * @param $appId
+     * @param $deviceToken
+     * @param $message
+     *
+     * @return mixed|null
+     * @throws \GeTui\exception\RequestException
+     */
     public function pushAPNMessageToSingle($appId, $deviceToken, $message)
     {
         $params = array();
@@ -553,6 +703,14 @@ Class IGeTui
         }
     }
 
+    /**
+     * @param $appId
+     * @param $alias
+     * @param $clientId
+     *
+     * @return mixed|null
+     * @throws \GeTui\exception\RequestException
+     */
     public function bindAlias($appId, $alias, $clientId)
     {
         $params = array();
@@ -564,6 +722,13 @@ Class IGeTui
         return $this->httpPostJSON($this->host, $params);
     }
 
+    /**
+     * @param $appId
+     * @param $targetList
+     *
+     * @return mixed|null
+     * @throws \GeTui\exception\RequestException
+     */
     public function bindAliasBatch($appId, $targetList)
     {
         $params = array();
@@ -582,6 +747,13 @@ Class IGeTui
         return $this->httpPostJSON($this->host, $params);
     }
 
+    /**
+     * @param $appId
+     * @param $alias
+     *
+     * @return mixed|null
+     * @throws \GeTui\exception\RequestException
+     */
     public function queryClientId($appId, $alias)
     {
         $params = array();
@@ -592,6 +764,13 @@ Class IGeTui
         return $this->httpPostJSON($this->host, $params);
     }
 
+    /**
+     * @param $appId
+     * @param $clientId
+     *
+     * @return mixed|null
+     * @throws \GeTui\exception\RequestException
+     */
     public function queryAlias($appId, $clientId)
     {
         $params = array();
@@ -602,6 +781,14 @@ Class IGeTui
         return $this->httpPostJSON($this->host, $params);
     }
 
+    /**
+     * @param      $appId
+     * @param      $alias
+     * @param null $clientId
+     *
+     * @return mixed|null
+     * @throws \GeTui\exception\RequestException
+     */
     public function unBindAlias($appId, $alias, $clientId = null)
     {
         $params = array();
@@ -616,11 +803,24 @@ Class IGeTui
         return $this->httpPostJSON($this->host, $params);
     }
 
+    /**
+     * @param $appId
+     * @param $alias
+     *
+     * @return mixed|null
+     * @throws \GeTui\exception\RequestException
+     */
     public function unBindAliasAll($appId, $alias)
     {
         return $this->unBindAlias($appId, $alias);
     }
 
+    /**
+     * @param $taskId
+     *
+     * @return mixed|null
+     * @throws \GeTui\exception\RequestException
+     */
     public function getPushResult($taskId)
     {
         $params = array();
@@ -630,6 +830,13 @@ Class IGeTui
         return $this->httpPostJson($this->host, $params);
     }
 
+    /**
+     * @param $appId
+     * @param $groupName
+     *
+     * @return mixed|null
+     * @throws \GeTui\exception\RequestException
+     */
     public function getPushResultByGroupName($appId, $groupName)
     {
         $params = array();
@@ -640,6 +847,12 @@ Class IGeTui
         return $this->httpPostJSON($this->host, $params);
     }
 
+    /**
+     * @param $appId
+     *
+     * @return mixed|null
+     * @throws \GeTui\exception\RequestException
+     */
     public function getLast24HoursOnlineUserStatistics($appId)
     {
         $params = array();
@@ -652,11 +865,23 @@ Class IGeTui
 
     }
 
+    /**
+     * @param $taskIdList
+     *
+     * @return mixed|null
+     */
     public function getPushResultByTaskidList($taskIdList)
     {
         return $this->getPushActionResultByTaskids($taskIdList, null);
     }
 
+    /**
+     * @param $taskIdList
+     * @param $actionIdList
+     *
+     * @return mixed|null
+     * @throws \GeTui\exception\RequestException
+     */
     public function getPushActionResultByTaskids($taskIdList, $actionIdList)
     {
         $params = array();
@@ -667,6 +892,13 @@ Class IGeTui
         return $this->httpPostJson($this->host, $params);
     }
 
+    /**
+     * @param $appId
+     * @param $clientId
+     *
+     * @return mixed|null
+     * @throws \GeTui\exception\RequestException
+     */
     public function getUserTags($appId, $clientId)
     {
         $params = array();
@@ -677,6 +909,13 @@ Class IGeTui
         return $this->httpPostJson($this->host, $params);
     }
 
+    /**
+     * @param $appId
+     * @param $tagList
+     *
+     * @return mixed|null
+     * @throws \GeTui\exception\RequestException
+     */
     public function getUserCountByTags($appId, $tagList)
     {
         $params = array();
@@ -692,6 +931,12 @@ Class IGeTui
         return $this->httpPostJSON($this->host, $params);
     }
 
+    /**
+     * @param $appId
+     *
+     * @return mixed|null
+     * @throws \GeTui\exception\RequestException
+     */
     public function getPersonaTags($appId)
     {
         $params = array();
@@ -702,6 +947,13 @@ Class IGeTui
         return $this->httpPostJSON($this->host, $params);
     }
 
+    /**
+     * @param $appId
+     * @param $date
+     *
+     * @return mixed|null
+     * @throws \GeTui\exception\RequestException
+     */
     public function queryAppPushDataByDate($appId, $date)
     {
         if (!LangUtils::validateDate($date))
@@ -716,6 +968,13 @@ Class IGeTui
         return $this->httpPostJson($this->host, $params);
     }
 
+    /**
+     * @param $appId
+     * @param $date
+     *
+     * @return mixed|null
+     * @throws \GeTui\exception\RequestException
+     */
     public function queryAppUserDataByDate($appId, $date)
     {
         if (!LangUtils::validateDate($date))
@@ -730,6 +989,13 @@ Class IGeTui
         return $this->httpPostJson($this->host, $params);
     }
 
+    /**
+     * @param $appId
+     * @param $appConditions
+     *
+     * @return mixed|null
+     * @throws \GeTui\exception\RequestException
+     */
     public function queryUserCount($appId, $appConditions)
     {
         $params = array();
@@ -743,6 +1009,13 @@ Class IGeTui
         return $this->httpPostJson($this->host, $params);
     }
 
+    /**
+     * @param      $message
+     * @param null $requestId
+     *
+     * @return array|mixed|null
+     * @throws \GeTui\exception\RequestException
+     */
     public function pushTagMessage($message, $requestId = null)
     {
         if (!$message instanceof IGtTagMessage)
@@ -769,11 +1042,24 @@ Class IGeTui
         return $this->httpPostJSON($this->host, $params);
     }
 
+    /**
+     * @param $message
+     *
+     * @return array|mixed|null
+     * @throws \GeTui\exception\RequestException
+     */
     public function pushTagMessageRetry($message)
     {
         return $this->pushTagMessage($message, null);
     }
 
+    /**
+     * @param $taskId
+     * @param $appId
+     *
+     * @return mixed|null
+     * @throws \GeTui\exception\RequestException
+     */
     public function getScheduleTask($taskId, $appId)
     {
         $params = array();
@@ -787,6 +1073,13 @@ Class IGeTui
 
     }
 
+    /**
+     * @param $taskId
+     * @param $appId
+     *
+     * @return mixed|null
+     * @throws \GeTui\exception\RequestException
+     */
     public function delScheduleTask($taskId, $appId)
     {
         $params = array();
@@ -799,6 +1092,13 @@ Class IGeTui
 
     }
 
+    /**
+     * @param $appId
+     * @param $cidAndPn
+     *
+     * @return mixed|null
+     * @throws \GeTui\exception\RequestException
+     */
     public function bindCidPn($appId, $cidAndPn)
     {
         $params = array();
@@ -810,6 +1110,13 @@ Class IGeTui
         return $this->httpPostJSON($this->host, $params);
     }
 
+    /**
+     * @param $appId
+     * @param $cid
+     *
+     * @return mixed|null
+     * @throws \GeTui\exception\RequestException
+     */
     public function unbindCidPn($appId, $cid)
     {
         $params = array();
@@ -821,6 +1128,13 @@ Class IGeTui
         return $this->httpPostJSON($this->host, $params);
     }
 
+    /**
+     * @param $appId
+     * @param $cid
+     *
+     * @return mixed|null
+     * @throws \GeTui\exception\RequestException
+     */
     public function queryCidPn($appId, $cid)
     {
         $params = array();
@@ -832,6 +1146,13 @@ Class IGeTui
         return $this->httpPostJSON($this->host, $params);
     }
 
+    /**
+     * @param $appId
+     * @param $taskId
+     *
+     * @return mixed|null
+     * @throws \GeTui\exception\RequestException
+     */
     public function stopSendSms($appId, $taskId)
     {
         $params = array();
@@ -843,6 +1164,11 @@ Class IGeTui
 
     }
 
+    /**
+     * @param $info
+     *
+     * @return array
+     */
     private function get_result($info)
     {
         $ret = array();
@@ -850,6 +1176,9 @@ Class IGeTui
         return $ret;
     }
 
+    /**
+     * @return string
+     */
     private function micro_time()
     {
         list($usec, $sec) = explode(" ", microtime());
