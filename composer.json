@@ -1,0 +1,22 @@
+{
+  "name": "oyxp/getui",
+  "description": "getui class autoload",
+  "keywords": [
+    "php getui sdk",
+    "getui"
+  ],
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "snailZED",
+      "email": "584119837@qq.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "autoload": {
+    "psr-4": {
+      "\\GeTui\\": "/"
+    }
+  }
+}
