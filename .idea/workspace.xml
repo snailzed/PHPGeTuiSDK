@@ -2,52 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="534a527b-d685-492f-ad2b-2d465105faa9" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IGt.Batch.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/IGt.Batch.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IGt.Push.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/IGt.Push.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/demo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exception/RequestException.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/exception/RequestException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/igetui/IGt.APNPayload.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/igetui/IGt.APNPayload.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/igetui/IGt.AppMessage.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/igetui/IGt.AppMessage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/igetui/IGt.ListMessage.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/igetui/IGt.ListMessage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/igetui/IGt.Message.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/igetui/IGt.Message.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/igetui/IGt.MultiMedia.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/igetui/IGt.MultiMedia.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/igetui/IGt.Req.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/igetui/IGt.Req.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/igetui/IGt.SingleMessage.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/igetui/IGt.SingleMessage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/igetui/IGt.TagMessage.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/igetui/IGt.TagMessage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/igetui/IGt.Target.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/igetui/IGt.Target.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/igetui/template/IGt.APNTemplate.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/igetui/template/IGt.APNTemplate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/igetui/template/IGt.BaseTemplate.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/igetui/template/IGt.BaseTemplate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/igetui/template/IGt.LinkTemplate.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/igetui/template/IGt.LinkTemplate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/igetui/template/IGt.NotificationTemplate.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/igetui/template/IGt.NotificationTemplate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/igetui/template/IGt.NotyPopLoadTemplate.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/igetui/template/IGt.NotyPopLoadTemplate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/igetui/template/IGt.StartActivityTemplate.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/igetui/template/IGt.StartActivityTemplate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/igetui/template/IGt.TransmissionTemplate.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/igetui/template/IGt.TransmissionTemplate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/igetui/template/notify/IGt.Notify.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/igetui/template/notify/IGt.Notify.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/igetui/template/notify/SmsMessage.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/igetui/template/notify/SmsMessage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/igetui/utils/ApiUrlRespectUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/igetui/utils/ApiUrlRespectUtils.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/igetui/utils/ApnsUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/igetui/utils/ApnsUtils.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/igetui/utils/AppConditions.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/igetui/utils/AppConditions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/igetui/utils/GTConfig.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/igetui/utils/GTConfig.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/igetui/utils/HttpManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/igetui/utils/HttpManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/igetui/utils/LangUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/igetui/utils/LangUtils.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/igetui/utils/LogUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/igetui/utils/LogUtils.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payload/Payload.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/payload/Payload.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payload/VOIPPayload.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/payload/VOIPPayload.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/protobuf/encoding/pb_base128.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/protobuf/encoding/pb_base128.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/protobuf/pb_message.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/protobuf/pb_message.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/protobuf/reader/pb_input_reader.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/protobuf/reader/pb_input_reader.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/protobuf/reader/pb_input_string_reader.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/protobuf/reader/pb_input_string_reader.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/protobuf/type/pb_bool.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/protobuf/type/pb_bool.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/protobuf/type/pb_bytes.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/protobuf/type/pb_bytes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/protobuf/type/pb_enum.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/protobuf/type/pb_enum.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/protobuf/type/pb_int.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/protobuf/type/pb_int.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/protobuf/type/pb_scalar.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/protobuf/type/pb_scalar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/protobuf/type/pb_signed_int.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/protobuf/type/pb_signed_int.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/protobuf/type/pb_string.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/protobuf/type/pb_string.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/readme.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -97,7 +52,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
@@ -106,11 +61,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="composer.json" pinned="false" current-in-tab="false">
+      <file leaf-file-name="composer.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/composer.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+            <state relative-caret-position="195">
+              <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -234,8 +189,8 @@
         <option value="$PROJECT_DIR$/IGt.Batch.php" />
         <option value="$PROJECT_DIR$/IGt.Push.php" />
         <option value="$PROJECT_DIR$/demo.php" />
-        <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/composer.json" />
       </list>
     </option>
   </component>
@@ -415,7 +370,7 @@
       <updated>1535340042429</updated>
       <workItem from="1535340043900" duration="19258000" />
       <workItem from="1536822817556" duration="132000" />
-      <workItem from="1539312023040" duration="3888000" />
+      <workItem from="1539312023040" duration="4045000" />
     </task>
     <task id="LOCAL-00001" summary="add namespace">
       <created>1539313925247</created>
@@ -435,7 +390,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23278000" />
+    <option name="totallyTimeSpent" value="23435000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -853,13 +808,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/composer/autoload_psr4.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -878,6 +826,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="5" lean-forward="true" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
         </state>
       </provider>
     </entry>
