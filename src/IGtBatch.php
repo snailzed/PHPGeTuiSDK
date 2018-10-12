@@ -8,8 +8,8 @@
 
 namespace GeTui;
 
-use GeTui\igetui\SingleBatchItem;
-use GeTui\igetui\SingleBatchRequest;
+use GeTui\igetui\request\SingleBatchItem;
+use GeTui\igetui\request\SingleBatchRequest;
 use GeTui\igetui\utils\GTConfig;
 use GeTui\igetui\utils\LangUtils;
 

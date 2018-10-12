@@ -36,5 +36,5 @@ $data = [
     "end_time"   => "",
 ];
 $res = IGt::getInstance($config)
-    ->pushMessageToApp(IGt::$notification_tpl, $data);
+    ->pushMessageToSingle(IGt::$notification_tpl,$token, $data);
 var_dump($res);
