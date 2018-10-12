@@ -9,7 +9,8 @@ namespace GeTui\igetui;
  * Date: 17-7-27
  * Time: 下午3:21
  */
-class IGtMultiMedia {
+class IGtMultiMedia
+{
     /**
      * @var资源ID
      */
@@ -27,49 +28,52 @@ class IGtMultiMedia {
      */
     var $onlywifi = 0;
 
-    public function __construct(){}
+    public function __construct()
+    {
+    }
 
-    function get_rid() {
+    function get_rid()
+    {
         return $this->rid;
     }
 
-    function  set_rid($rid) {
+    function set_rid($rid)
+    {
         $this->rid = $rid;
         return $this;
     }
 
-    function get_url() {
+    function get_url()
+    {
         return $this->url;
     }
 
-    function set_url($url) {
+    function set_url($url)
+    {
         $this->url = $url;
-        return$this;
-    }
-
-    function get_type() {
-        return $this -> type;
-    }
-
-    function set_type($type) {
-        $this -> type = $type;
         return $this;
     }
 
-    function set_onlywifi($onlywifi) {
-        $this -> onlywifi = $onlywifi ? 1:0;
+    function get_type()
+    {
+        return $this->type;
+    }
+
+    function set_type($type)
+    {
+        $this->type = $type;
         return $this;
     }
 
-    function get_onlywifi() {
-        return $this -> onlywifi;
+    function set_onlywifi($onlywifi)
+    {
+        $this->onlywifi = $onlywifi ? 1 : 0;
+        return $this;
+    }
+
+    function get_onlywifi()
+    {
+        return $this->onlywifi;
     }
 }
 
-class MediaType {
-    const __default = self::pic;
-
-    const pic = 1;
-    const audio = 2;
-    const video = 3;
-}

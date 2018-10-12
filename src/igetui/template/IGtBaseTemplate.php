@@ -4,16 +4,12 @@ namespace GeTui\igetui\template;
 
 use GeTui\igetui\DictionaryAlertMsg;
 use GeTui\igetui\IGtAPNPayload;
-use GeTui\igetui\PushInfo;
+use GeTui\igetui\request\PushInfo;
 use GeTui\igetui\SmsContentEntry;
 use GeTui\igetui\SmsInfo;
 use GeTui\igetui\Transparent;
 use RuntimeException;
 
-require_once(dirname(__FILE__) . '/' . '../utils/ApnsUtils.php');
-require_once(dirname(__FILE__) . '/' . '../IGt.APNPayload.php');
-require_once(dirname(__FILE__) . '/' . './notify/SmsMessage.php');
-require_once(dirname(__FILE__) . '/' . './notify/SmsMessage.php');
 
 class IGtBaseTemplate
 {
@@ -109,10 +105,11 @@ class IGtBaseTemplate
     {
         if ($this->pushInfo == null) {
             $this->pushInfo = new PushInfo();
+
             $this->pushInfo->set_invalidAPN(true);
+
             $this->pushInfo->set_invalidMPN(true);
         }
-
         return $this->pushInfo;
     }
 

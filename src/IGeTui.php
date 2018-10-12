@@ -12,9 +12,6 @@ use GeTui\igetui\utils\HttpManager;
 use GeTui\igetui\utils\LangUtils;
 use \Exception;
 
-header("Content-Type: text/html; charset=utf-8");
-
-
 Class IGeTui
 {
     var $appkey; //第三方 标识
@@ -39,7 +36,6 @@ Class IGeTui
         }
 
         $this->useSSL = ($ssl == NULL ? false : $ssl);
-
 
         if ($domainUrl == NULL || strlen($domainUrl) == 0)
         {
