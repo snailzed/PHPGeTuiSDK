@@ -5,6 +5,8 @@
  * Date: 14-8-23
  * Time: 下午4:56
  */
+namespace GeTui\igetui\utils;
+
 Class ApnsUtils
 {
 
@@ -73,11 +75,11 @@ Class ApnsUtils
         }
 
         if($isValid == false){
-            throw new Exception("one of the params(locKey,message,badge) must not be null or contentAvailable must be 1");
+            throw new \Exception("one of the params(locKey,message,badge) must not be null or contentAvailable must be 1");
         }
         $json = $pb->toString();
         if($json == null){
-            throw new Exception("payload json is null");
+            throw new \Exception("payload json is null");
         }
         return $json;
     }
@@ -114,7 +116,7 @@ Class Payload
             $this->params = array();
         }
         if ($this->APS == strtolower($key)) {
-            throw new Exception("the key can't be aps");
+            throw new \Exception("the key can't be aps");
         }
         $this->params[$key] = $obj;
     }

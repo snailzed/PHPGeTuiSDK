@@ -2,6 +2,10 @@
 /**
  * Abstract class for an input reader
  */
+namespace GeTui\protobuf\reader;
+
+use GeTui\protobuf\encoding\base128varint;
+
 abstract class PBInputReader
 {
 	protected $base128;

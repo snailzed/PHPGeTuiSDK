@@ -1,22 +1,22 @@
 <?php
 /**
  * Including of all files needed to parse messages
+ *
  * @author Nikolai Kordulla
  */
-require_once(dirname(__FILE__). '/' . 'encoding/pb_base128.php');
-require_once(dirname(__FILE__). '/' . 'type/pb_scalar.php');
-require_once(dirname(__FILE__). '/' . 'type/pb_enum.php');
-require_once(dirname(__FILE__). '/' . 'type/pb_bytes.php');
-require_once(dirname(__FILE__). '/' . 'type/pb_string.php');
-require_once(dirname(__FILE__). '/' . 'type/pb_int.php');
-require_once(dirname(__FILE__). '/' . 'type/pb_bool.php');
-require_once(dirname(__FILE__). '/' . 'type/pb_signed_int.php');
-require_once(dirname(__FILE__). '/' . 'reader/pb_input_reader.php');
-require_once(dirname(__FILE__). '/' . 'reader/pb_input_string_reader.php');
+
 /**
  * Abstract Message class
+ *
  * @author Nikolai Kordulla
  */
+namespace GeTui\protobuf;
+
+use GeTui\protobuf\encoding\base128varint;
+use GeTui\protobuf\reader\PBInputStringReader;
+use GeTui\protobuf\type\PBInt;
+use GeTui\protobuf\type\PBString;
+
 abstract class PBMessage
 {
     const WIRED_VARINT = 0;
@@ -56,7 +56,7 @@ abstract class PBMessage
     /**
      * Constructor - initialize base128 class
      */
-    public function __construct($reader=null)
+    public function __construct($reader = null)
     {
         $this->reader = $reader;
         $this->value = $this;
@@ -65,7 +65,9 @@ abstract class PBMessage
 
     /**
      * Get the wired_type and field_type
+     *
      * @param $number as decimal
+     *
      * @return array wired_type, field_type
      */
     public function get_types($number)
@@ -73,7 +75,7 @@ abstract class PBMessage
         $binstring = decbin($number);
         $types = array();
         $low = substr($binstring, strlen($binstring) - 3, strlen($binstring));
-        $high = substr($binstring,0, strlen($binstring) - 3) . '0000';
+        $high = substr($binstring, 0, strlen($binstring) - 3) . '0000';
         $types['wired'] = bindec($low);
         $types['field'] = bindec($binstring) >> 3;
         return $types;
@@ -82,9 +84,10 @@ abstract class PBMessage
 
     /**
      * Encodes a Message
+     *
      * @return string the encoded message
      */
-    public function SerializeToString($rec=-1)
+    public function SerializeToString($rec = -1)
     {
         $string = '';
         // wired and type
@@ -130,6 +133,7 @@ abstract class PBMessage
 
     /**
      * Serializes the chunk
+     *
      * @param String $stringinner - String where to append the chunk
      */
     public function _serialize_chunk(&$stringinner)
@@ -163,7 +167,7 @@ abstract class PBMessage
     /**
      * Internal function
      */
-    private function _ParseFromArray($length=99999999)
+    private function _ParseFromArray($length = 99999999)
     {
         $_begin = $this->reader->get_pointer();
         while ($this->reader->get_pointer() - $_begin < $length)
@@ -190,7 +194,7 @@ abstract class PBMessage
                 }
                 else
                 {
-                    throw new Exception('I dont understand this wired code:' . $messtypes['wired']);
+                    throw new \Exception('I dont understand this wired code:' . $messtypes['wired']);
                 }
 
                 // perhaps send a warning out
@@ -209,7 +213,7 @@ abstract class PBMessage
                 $index = count($this->values[$messtypes['field']]) - 1;
                 if ($messtypes['wired'] != $this->values[$messtypes['field']][$index]->wired_type)
                 {
-                    throw new Exception('Expected type:' . $messtypes['wired'] . ' but had ' . $this->fields[$messtypes['field']]->wired_type);
+                    throw new \Exception('Expected type:' . $messtypes['wired'] . ' but had ' . $this->fields[$messtypes['field']]->wired_type);
                 }
                 $this->values[$messtypes['field']][$index]->ParseFromArray();
             }
@@ -218,7 +222,7 @@ abstract class PBMessage
                 $this->values[$messtypes['field']] = new $this->fields[$messtypes['field']]($this->reader);
                 if ($messtypes['wired'] != $this->values[$messtypes['field']]->wired_type)
                 {
-                    throw new Exception('Expected type:' . $messtypes['wired'] . ' but had ' . $this->fields[$messtypes['field']]->wired_type);
+                    throw new \Exception('Expected type:' . $messtypes['wired'] . ' but had ' . $this->fields[$messtypes['field']]->wired_type);
                 }
                 $this->values[$messtypes['field']]->ParseFromArray();
             }
@@ -227,6 +231,7 @@ abstract class PBMessage
 
     /**
      * Add an array value
+     *
      * @param int - index of the field
      */
     protected function _add_arr_value($index)
@@ -236,6 +241,7 @@ abstract class PBMessage
 
     /**
      * Set an array value - @TODO failure check
+     *
      * @param int - index of the field
      * @param int - index of the array
      * @param object - the value
@@ -247,15 +253,17 @@ abstract class PBMessage
 
     /**
      * Remove the last array value
+     *
      * @param int - index of the field
      */
     protected function _remove_last_arr_value($index)
     {
-    	array_pop($this->values[$index]);
+        array_pop($this->values[$index]);
     }
 
     /**
      * Set an value
+     *
      * @param int - index of the field
      * @param Mixed value
      */
@@ -274,6 +282,7 @@ abstract class PBMessage
 
     /**
      * Get a value
+     *
      * @param id of the field
      */
     protected function _get_value($index)
@@ -285,6 +294,7 @@ abstract class PBMessage
 
     /**
      * Get array value
+     *
      * @param id of the field
      * @param value
      */
@@ -295,6 +305,7 @@ abstract class PBMessage
 
     /**
      * Get array size
+     *
      * @param id of the field
      */
     protected function _get_arr_size($index)
@@ -314,6 +325,7 @@ abstract class PBMessage
 
     /**
      * Sends the message via post request ['message'] to the url
+     *
      * @param the url
      * @param the PBMessage class where the request should be encoded
      *
@@ -334,11 +346,11 @@ abstract class PBMessage
             $class->parseFromString($this->_d_string);
         return $this->_d_string;
     }
-    
- 	/**
+
+    /**
      * Fix Memory Leaks with Objects in PHP 5
      * http://paul-m-jones.com/?p=262
-     * 
+     *
      * thanks to cheton
      * http://code.google.com/p/pb4php/issues/detail?id=3&can=1
      */
@@ -355,7 +367,7 @@ abstract class PBMessage
         // base128
         if (isset($this->base128))
         {
-           unset($this->base128);
+            unset($this->base128);
         }
         // fields
         if (isset($this->fields))
@@ -382,7 +394,7 @@ abstract class PBMessage
                         unset($value2);
                     }
                     if (isset($name2))
-                    	unset($value->$name2);
+                        unset($value->$name2);
                 }
                 else
                 {
@@ -397,6 +409,7 @@ abstract class PBMessage
             unset($this->values);
         }
     }
-    
+
 }
+
 ?>

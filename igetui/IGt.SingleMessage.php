@@ -1,4 +1,6 @@
-<?php 
+<?php
+
+namespace GeTui\igetui;
 
 Class IGtSingleMessage extends IGtMessage{
 	

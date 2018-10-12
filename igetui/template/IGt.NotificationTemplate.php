@@ -1,4 +1,12 @@
-<?php 
+<?php
+
+namespace GeTui\igetui\template;
+
+use GeTui\igetui\ActionChain;
+use GeTui\igetui\ActionChain_Type;
+use GeTui\igetui\AppStartUp;
+use GeTui\igetui\InnerFiled;
+use GeTui\igetui\InnerFiled_Type;
 
 class IGtNotificationTemplate extends IGtBaseTemplate {
 

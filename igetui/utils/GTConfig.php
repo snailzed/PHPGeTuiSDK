@@ -5,9 +5,11 @@
  * Date: 15-5-7
  * Time: 下午2:15
  */
+
+namespace GeTui\igetui\utils;
+
 class GTConfig
 {
-
 
 
     public static function isPushSingleBatchAsync()
@@ -34,6 +36,7 @@ class GTConfig
     {
         return (int)GTConfig::getProperty("gexin_http_proxy_port", "gexin.rp.sdk.http.proxyPort", 80);
     }
+
     public static function getHttpProxyUserName()
     {
         return GTConfig::getProperty("gexin_http_proxy_username", "gexin.rp.sdk.http.proxyUserName");
@@ -80,68 +83,71 @@ class GTConfig
         return (int)GTConfig::getProperty("gexin_http_tryCount", "gexin.rp.sdk.http.gexinTryCount", 3);
     }
 
-    public static function getMaxLenOfBlackCidList(){
+    public static function getMaxLenOfBlackCidList()
+    {
         return (int)GTConfig::getProperty("gexin_max_blkCid_length", null, 1000);
     }
+
     public static function getDefaultDomainUrl($useSSL)
     {
         $urlStr = GTConfig::getProperty("gexin_default_domainurl", null);
-        if ($urlStr == null || "".equals(trim($urlStr)))
+        if ($urlStr == null || "" == (trim($urlStr)))
         {
-			if ($useSSL)
-			{
-				$hosts = array("https://cncapi.getui.com/serviceex","https://telapi.getui.com/serviceex",
-								"https://api.getui.com/serviceex","https://sdk1api.getui.com/serviceex",
-								"https://sdk2api.getui.com/serviceex","https://sdk3api.getui.com/serviceex");
-			}
-			else
-			{
-				$hosts = array("http://sdk.open.api.igexin.com/serviceex","http://sdk.open.api.gepush.com/serviceex",
-								"http://sdk.open.api.getui.net/serviceex","http://sdk1.open.api.igexin.com/serviceex",
-								"http://sdk2.open.api.igexin.com/serviceex","http://sdk3.open.api.igexin.com/serviceex");
-			}
+            if ($useSSL)
+            {
+                $hosts = array("https://cncapi.getui.com/serviceex", "https://telapi.getui.com/serviceex",
+                               "https://api.getui.com/serviceex", "https://sdk1api.getui.com/serviceex",
+                               "https://sdk2api.getui.com/serviceex", "https://sdk3api.getui.com/serviceex");
+            }
+            else
+            {
+                $hosts = array("http://sdk.open.api.igexin.com/serviceex", "http://sdk.open.api.gepush.com/serviceex",
+                               "http://sdk.open.api.getui.net/serviceex", "http://sdk1.open.api.igexin.com/serviceex",
+                               "http://sdk2.open.api.igexin.com/serviceex", "http://sdk3.open.api.igexin.com/serviceex");
+            }
         }
-		else
-		{
-			$list = explode(",",$urlStr);
-			$hosts = array();
-			foreach ($list as $value)
-			{
-				if (strpos($value, "https://") === 0 && !$useSSL)
-				{
-					continue;
-				}
-				if (strpos($value, "http://") === 0 && $useSSL)
-				{
-					continue;
-				}
-				if ($useSSL && strpos($value, "http") != 0)
-				{
-					$value = "https://".$value;
-				}
-				array_push($hosts, $value);
-			}
-		}
+        else
+        {
+            $list = explode(",", $urlStr);
+            $hosts = array();
+            foreach ($list as $value)
+            {
+                if (strpos($value, "https://") === 0 && !$useSSL)
+                {
+                    continue;
+                }
+                if (strpos($value, "http://") === 0 && $useSSL)
+                {
+                    continue;
+                }
+                if ($useSSL && strpos($value, "http") != 0)
+                {
+                    $value = "https://" . $value;
+                }
+                array_push($hosts, $value);
+            }
+        }
         return $hosts;
     }
 
     private static function getProperty($key, $oldKey, $defaultValue = null)
     {
         $value = getenv($key);
-        if($value != null)
+        if ($value != null)
         {
             return $value;
         }
         else
 
-            if($oldKey != null)
+            if ($oldKey != null)
             {
                 $value = getenv($oldKey);
             }
-        if($value == null)
+        if ($value == null)
         {
             return $defaultValue;
-        }else
+        }
+        else
         {
             return $value;
         }

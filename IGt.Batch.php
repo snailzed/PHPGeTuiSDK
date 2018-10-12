@@ -5,8 +5,15 @@
  * Date: 15-4-9
  * Time: 下午3:45
  */
+
+namespace GeTui;
+
+use GeTui\igetui\SingleBatchItem;
+use GeTui\igetui\SingleBatchRequest;
+use GeTui\igetui\utils\GTConfig;
+use GeTui\igetui\utils\LangUtils;
+
 header("Content-Type: text/html; charset=utf-8");
-require_once(dirname(__FILE__) . '/' . 'IGt.Push.php');
 
 class IGtBatch
 {
@@ -32,9 +39,12 @@ class IGtBatch
 
     public function add($message, $target)
     {
-        if ($this->seqId >= 5000) {
-            throw new Exception("Can not add over 5000 message once! Please call submit() first.");
-        } else {
+        if ($this->seqId >= 5000)
+        {
+            throw new \Exception("Can not add over 5000 message once! Please call submit() first.");
+        }
+        else
+        {
             $this->seqId += 1;
             $innerMsg = new SingleBatchItem();
             $innerMsg->set_seqId($this->seqId);
@@ -46,7 +56,7 @@ class IGtBatch
 
     public function createSingleJson($message, $target)
     {
-        $params = $this->push->getSingleMessagePostData($message,$target);
+        $params = $this->push->getSingleMessagePostData($message, $target);
         return json_encode($params);
     }
 
@@ -54,14 +64,15 @@ class IGtBatch
     {
         $requestId = LangUtils::randomUUID();
         $data = array();
-        $data["appkey"]=$this->APPKEY;
+        $data["appkey"] = $this->APPKEY;
         $data["serialize"] = "pb";
         $data["async"] = GTConfig::isPushSingleBatchAsync();
         $data["action"] = "pushMessageToSingleBatchAction";
         $data['requestId'] = $requestId;
         $singleBatchRequest = new SingleBatchRequest();
         $singleBatchRequest->set_batchId($this->batchId);
-        foreach ($this->innerMsgList as $index => $innerMsg) {
+        foreach ($this->innerMsgList as $index => $innerMsg)
+        {
             $singleBatchRequest->add_batchItem();
             $singleBatchRequest->set_batchItem($index, $innerMsg);
         }
@@ -79,6 +90,7 @@ class IGtBatch
         return $result;
     }
 
-    public function setApiUrl($apiUrl) {
+    public function setApiUrl($apiUrl)
+    {
     }
 }

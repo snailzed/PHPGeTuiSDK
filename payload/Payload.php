@@ -1,6 +1,9 @@
 <?php
 
-interface OtherPayload{
+namespace GeTui\payload;
+
+interface OtherPayload
+{
 
     function get_payload();
 

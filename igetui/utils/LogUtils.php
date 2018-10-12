@@ -5,6 +5,8 @@
  * Date: 15-5-9
  * Time: 下午3:17
  */
+namespace GeTui\igetui\utils;
+
 class LogUtils
 {
     static $debug = true;

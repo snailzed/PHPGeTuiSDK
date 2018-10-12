@@ -1,7 +1,10 @@
 <?php
 
+namespace GeTui\protobuf\encoding;
+
 /**
  * Base 128 varints - decodes and encodes base128 varints to/from decimal
+ *
  * @author Nikolai Kordulla
  */
 class base128varint
@@ -20,7 +23,7 @@ class base128varint
 
     /**
      * @param $number - number as decimal
-     * Returns the base128 value of an dec value
+     *                Returns the base128 value of an dec value
      */
     public function set_value($number)
     {
@@ -72,6 +75,7 @@ class base128varint
 
     /**
      * Returns the dec value of an base128
+     *
      * @param string bstring
      */
     public function get_value($string)
@@ -95,13 +99,14 @@ class base128varint
 
     /**
      * Converts hex 2 ascii
+     *
      * @param String $hex - the hex string
      */
     public function hex_to_str($hex)
     {
         $str = '';
 
-        for($i = 0; $i < strlen($hex); $i += 2)
+        for ($i = 0; $i < strlen($hex); $i += 2)
         {
             $str .= chr(hexdec(substr($hex, $i, 2)));
         }

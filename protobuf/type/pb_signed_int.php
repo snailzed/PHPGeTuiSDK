@@ -2,6 +2,10 @@
 /**
  * @author Nikolai Kordulla
  */
+namespace GeTui\protobuf\type;
+
+use GeTui\protobuf\PBMessage;
+
 class PBSignedInt extends PBScalar
 {
 	var $wired_type = PBMessage::WIRED_VARINT;

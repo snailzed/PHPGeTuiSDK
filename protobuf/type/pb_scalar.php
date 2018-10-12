@@ -2,6 +2,10 @@
 /**
  * @author Nikolai Kordulla
  */
+namespace GeTui\protobuf\type;
+
+use GeTui\protobuf\PBMessage;
+
 class PBScalar extends PBMessage
 {
 	/**

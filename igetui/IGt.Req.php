@@ -1,4 +1,11 @@
 <?php
+
+namespace GeTui\igetui;
+
+use GeTui\protobuf\PBMessage;
+use GeTui\protobuf\type\PBBool;
+use GeTui\protobuf\type\PBEnum;
+
 class CmdID extends PBEnum
 {
   const GTHEARDBT  = 0;

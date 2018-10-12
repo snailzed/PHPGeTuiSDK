@@ -1,17 +1,26 @@
 ﻿<?php
+
+use GeTui\exception\RequestException;
+use GeTui\IGeTui;
+use GeTui\igetui\DictionaryAlertMsg;
+use GeTui\igetui\IGtAPNPayload;
+use GeTui\igetui\IGtAppMessage;
+use GeTui\igetui\IGtListMessage;
+use GeTui\igetui\IGtMultiMedia;
+use GeTui\igetui\IGtSingleMessage;
+use GeTui\igetui\IGtTagMessage;
+use GeTui\igetui\IGtTarget;
+use GeTui\igetui\MediaType;
+use GeTui\igetui\template\IGtLinkTemplate;
+use GeTui\igetui\template\IGtNotificationTemplate;
+use GeTui\igetui\template\IGtNotyPopLoadTemplate;
+use GeTui\igetui\template\IGtTransmissionTemplate;
+use GeTui\igetui\template\notify\SmsMessage;
+use GeTui\igetui\utils\AppConditions;
+use GeTui\IGtBatch;
+
 error_reporting(0);
 header("Content-Type: text/html; charset=utf-8");
-
-require_once(dirname(__FILE__) . '/' . 'IGt.Push.php');
-require_once(dirname(__FILE__) . '/' . 'igetui/IGt.AppMessage.php');
-require_once(dirname(__FILE__) . '/' . 'igetui/IGt.TagMessage.php');
-require_once(dirname(__FILE__) . '/' . 'igetui/IGt.APNPayload.php');
-require_once(dirname(__FILE__) . '/' . 'igetui/template/IGt.BaseTemplate.php');
-require_once(dirname(__FILE__) . '/' . 'IGt.Batch.php');
-require_once(dirname(__FILE__) . '/' . 'igetui/utils/AppConditions.php');
-require_once(dirname(__FILE__) . '/' . 'igetui/template/notify/IGt.Notify.php');
-require_once(dirname(__FILE__) . '/' . 'igetui/IGt.MultiMedia.php');
-require_once(dirname(__FILE__) . '/' . 'payload/VOIPPayload.php');
 
 ////设置代理
 //putenv("gexin_http_proxy_ip=192.168.44.129");

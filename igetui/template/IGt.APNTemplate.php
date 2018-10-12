@@ -6,6 +6,9 @@
  * Time: 下午2:12
  */
 
-class IGtAPNTemplate extends IGtBaseTemplate{
+namespace GeTui\igetui\template;
+
+class IGtAPNTemplate extends IGtBaseTemplate
+{
 
 } 

@@ -3,22 +3,29 @@
 /**
  * Class IGtNotify
  */
-class IGtNotify {
+
+namespace GeTui\igetui\template\notify;
+
+class IGtNotify
+{
 
     /**
      * 通知标题
+     *
      * @var
      */
     var $title;
 
     /**
      * 通知内容
+     *
      * @var
      */
     var $content;
 
     /**
      * 通知内容中携带的透传内容
+     *
      * @var
      */
     var $payload;

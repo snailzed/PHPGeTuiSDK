@@ -1,5 +1,15 @@
 <?php
 
+namespace GeTui\igetui\template;
+
+use GeTui\igetui\DictionaryAlertMsg;
+use GeTui\igetui\IGtAPNPayload;
+use GeTui\igetui\PushInfo;
+use GeTui\igetui\SmsContentEntry;
+use GeTui\igetui\SmsInfo;
+use GeTui\igetui\Transparent;
+use RuntimeException;
+
 require_once(dirname(__FILE__) . '/' . '../utils/ApnsUtils.php');
 require_once(dirname(__FILE__) . '/' . '../IGt.APNPayload.php');
 require_once(dirname(__FILE__) . '/' . './notify/SmsMessage.php');
@@ -72,9 +82,9 @@ class IGtBaseTemplate
         $ss = (string)strtotime($begin) * 1000;
         $e = (string)strtotime($end) * 1000;
         if ($ss <= 0 || $e <= 0)
-            throw new Exception("DateFormat: yyyy-MM-dd HH:mm:ss");
+            throw new \Exception("DateFormat: yyyy-MM-dd HH:mm:ss");
         if ($ss > $e)
-            throw new Exception("startTime should be smaller than endTime");
+            throw new \Exception("startTime should be smaller than endTime");
 
         $this->duration = $ss . "-" . $e;
 
@@ -230,7 +240,7 @@ class IGtBaseTemplate
         }
         $len = strlen($payload);
         if ($len > IGtAPNPayload::$PAYLOAD_MAX_BYTES) {
-            throw new Exception("APN payload length overlength (" . $len . ">" . IGtAPNPayload::$PAYLOAD_MAX_BYTES . ")");
+            throw new \Exception("APN payload length overlength (" . $len . ">" . IGtAPNPayload::$PAYLOAD_MAX_BYTES . ")");
         }
         $pushInfo = $this->get_pushInfo();
         $pushInfo->set_apnJson($payload);

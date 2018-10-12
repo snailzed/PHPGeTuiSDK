@@ -5,6 +5,8 @@
  * Date: 2015/9/21
  * Time: 21:54
  */
+namespace GeTui\igetui\utils;
+
  class OptType {
     const _OR_ = 0;
     const _AND_ = 1;

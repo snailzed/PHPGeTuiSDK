@@ -1,4 +1,7 @@
 <?php
+
+namespace GeTui\igetui;
+
 header("Content-Type: text/html; charset=utf-8");
 class IGtTagMessage extends IGtMessage{
 
