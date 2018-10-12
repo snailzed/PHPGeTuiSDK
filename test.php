@@ -10,10 +10,10 @@ use GeTui\IGt;
 
 require __DIR__ . '/vendor/autoload.php';
 $host = "https://api.getui.com/apiex.htm";
-$appid = "Z6wmlQS1Qq6Zp3IJiLWnpA";
-$appsecret = "eE8i2paynnAZunkLGAXnu9";
-$appkey = "ruAkywbBi06DvBorF012DA";
-$mastersecret = "U7GqGDkaGe6HSmCyHKebS9";
+$appid = "Z6wmlQS1Qq6Zp3IJiLWnpA1";
+$appsecret = "eE8i2paynnAZunkLGAXnu91";
+$appkey = "ruAkywbBi06DvBorF012DA1";
+$mastersecret = "U7GqGDkaGe6HSmCyHKebS91";
 
 $config = [
     'host'         => $host,
