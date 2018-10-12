@@ -2,10 +2,10 @@
 
 namespace GeTui\igetui\template;
 
-use GeTui\igetui\ActionChain;
-use GeTui\igetui\ActionChain_Type;
-use GeTui\igetui\AppStartUp;
-use GeTui\igetui\NotifyInfo;
+use GeTui\igetui\request\ActionChain;
+use GeTui\igetui\request\ActionChainType;
+use GeTui\igetui\request\AppStartUp;
+use GeTui\igetui\request\NotifyInfo;
 use GeTui\igetui\utils\GTConfig;
 
 class IGtTransmissionTemplate extends IGtBaseTemplate
@@ -24,7 +24,7 @@ class IGtTransmissionTemplate extends IGtBaseTemplate
         // 设置actionChain
         $actionChain1 = new ActionChain();
         $actionChain1->set_actionId(1);
-        $actionChain1->set_type(ActionChain_Type::refer);
+        $actionChain1->set_type(ActionChainType::refer);
         $actionChain1->set_next(10030);
 
         //appStartUp
@@ -36,7 +36,7 @@ class IGtTransmissionTemplate extends IGtBaseTemplate
         //启动app
         $actionChain2 = new ActionChain();
         $actionChain2->set_actionId(10030);
-        $actionChain2->set_type(ActionChain_Type::startapp);
+        $actionChain2->set_type(ActionChainType::startapp);
         $actionChain2->set_appid("");
         $actionChain2->set_autostart($this->transmissionType == '1' ? true : false);
         $actionChain2->set_appstartupid($appStartUp);
@@ -46,7 +46,7 @@ class IGtTransmissionTemplate extends IGtBaseTemplate
         //结束
         $actionChain3 = new ActionChain();
         $actionChain3->set_actionId(100);
-        $actionChain3->set_type(ActionChain_Type::eoa);
+        $actionChain3->set_type(ActionChainType::eoa);
 
 
         array_push($actionChains, $actionChain1, $actionChain2, $actionChain3);

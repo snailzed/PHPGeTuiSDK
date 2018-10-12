@@ -10,6 +10,8 @@ namespace GeTui\igetui\request;
 
 
 use GeTui\protobuf\PBMessage;
+use GeTui\protobuf\type\PBBool;
+use GeTui\protobuf\type\PBString;
 
 class PushMMPSingleBatchMessage extends PBMessage
 {
@@ -17,11 +19,11 @@ class PushMMPSingleBatchMessage extends PBMessage
     public function __construct($reader=null)
     {
         parent::__construct($reader);
-        $this->fields["1"] = "PBString";
+        $this->fields["1"] = PBString::class;
         $this->values["1"] = "";
-        $this->fields["2"] = "PushMMPSingleMessage";
+        $this->fields["2"] = PushMMPSingleMessage::class;
         $this->values["2"] = array();
-        $this->fields["3"] = "PBBool";
+        $this->fields["3"] = PBBool::class;
         $this->values["3"] = "";
         $this->values["3"] = new PBBool();
         $this->values["3"]->value = true;

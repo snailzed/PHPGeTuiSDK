@@ -10,6 +10,8 @@ namespace GeTui\igetui\request;
 
 
 use GeTui\protobuf\PBMessage;
+use GeTui\protobuf\type\PBInt;
+use GeTui\protobuf\type\PBString;
 
 class Button extends PBMessage
 {
@@ -17,9 +19,9 @@ class Button extends PBMessage
     public function __construct($reader=null)
     {
         parent::__construct($reader);
-        $this->fields["1"] = "PBString";
+        $this->fields["1"] = PBString::class;
         $this->values["1"] = "";
-        $this->fields["2"] = "PBInt";
+        $this->fields["2"] = PBInt::class;
         $this->values["2"] = "";
     }
     function text()

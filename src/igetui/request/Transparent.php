@@ -10,6 +10,8 @@ namespace GeTui\igetui\request;
 
 
 use GeTui\protobuf\PBMessage;
+use GeTui\protobuf\type\PBInt;
+use GeTui\protobuf\type\PBString;
 
 class Transparent extends PBMessage
 {
@@ -17,29 +19,29 @@ class Transparent extends PBMessage
     public function __construct($reader=null)
     {
         parent::__construct($reader);
-        $this->fields["1"] = "PBString";
+        $this->fields["1"] = PBString::class;
         $this->values["1"] = "";
-        $this->fields["2"] = "PBString";
+        $this->fields["2"] = PBString::class;
         $this->values["2"] = "";
-        $this->fields["3"] = "PBString";
+        $this->fields["3"] = PBString::class;
         $this->values["3"] = "";
-        $this->fields["4"] = "PBString";
+        $this->fields["4"] = PBString::class;
         $this->values["4"] = "";
-        $this->fields["5"] = "PBString";
+        $this->fields["5"] = PBString::class;
         $this->values["5"] = "";
-        $this->fields["6"] = "PBString";
+        $this->fields["6"] = PBString::class;
         $this->values["6"] = "";
-        $this->fields["7"] = "PushInfo";
+        $this->fields["7"] = PushInfo::class;
         $this->values["7"] = "";
-        $this->fields["8"] = "ActionChain";
+        $this->fields["8"] = ActionChain::class;
         $this->values["8"] = array();
-        $this->fields["9"] = "PBString";
+        $this->fields["9"] = PBString::class;
         $this->values["9"] = array();
-        $this->fields["10"] = "PBInt";
+        $this->fields["10"] = PBInt::class;
         $this->values["10"] = "";
-        $this->fields["11"] = "PBString";
+        $this->fields["11"] = PBString::class;
         $this->values["11"] = "";
-        $this->fields["12"] = "SmsInfo";
+        $this->fields["12"] = SmsInfo::class;
         $this->values["12"] = "";
     }
     function id()

@@ -10,6 +10,7 @@ namespace GeTui\igetui\request;
 
 
 use GeTui\protobuf\PBMessage;
+use GeTui\protobuf\type\PBString;
 
 class PushMMPAppMessage extends PBMessage
 {
@@ -17,15 +18,15 @@ class PushMMPAppMessage extends PBMessage
     public function __construct($reader=null)
     {
         parent::__construct($reader);
-        $this->fields["1"] = "MMPMessage";
+        $this->fields["1"] = MMPMessage::class;
         $this->values["1"] = "";
-        $this->fields["2"] = "PBString";
+        $this->fields["2"] = PBString::class;
         $this->values["2"] = array();
-        $this->fields["3"] = "PBString";
+        $this->fields["3"] = PBString::class;
         $this->values["3"] = array();
-        $this->fields["4"] = "PBString";
+        $this->fields["4"] = PBString::class;
         $this->values["4"] = array();
-        $this->fields["5"] = "PBString";
+        $this->fields["5"] = PBString::class;
         $this->values["5"] = "";
     }
     function message()

@@ -9,6 +9,7 @@
 namespace GeTui\igetui\request;
 
 use GeTui\protobuf\PBMessage;
+use GeTui\protobuf\type\PBString;
 
 class SingleBatchRequest extends PBMessage
 {
@@ -16,9 +17,9 @@ class SingleBatchRequest extends PBMessage
     public function __construct($reader=null)
     {
         parent::__construct($reader);
-        $this->fields["1"] = "PBString";
+        $this->fields["1"] = PBString::class;
         $this->values["1"] = "";
-        $this->fields["2"] = "SingleBatchItem";
+        $this->fields["2"] = SingleBatchItem::class;
         $this->values["2"] = array();
     }
     function batchId()

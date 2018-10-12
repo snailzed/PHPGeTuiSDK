@@ -2,12 +2,13 @@
 
 namespace GeTui\igetui\template;
 
-use GeTui\igetui\ActionChain;
-use GeTui\igetui\ActionChain_Type;
-use GeTui\igetui\AppStartUp;
-use GeTui\igetui\Button;
-use GeTui\igetui\InnerFiled;
-use GeTui\igetui\InnerFiled_Type;
+
+use GeTui\igetui\request\ActionChain;
+use GeTui\igetui\request\ActionChainType;
+use GeTui\igetui\request\AppStartUp;
+use GeTui\igetui\request\Button;
+use GeTui\igetui\request\InnerFiled;
+use GeTui\igetui\request\InnerFiledType;
 
 class IGtNotyPopLoadTemplate extends IGtBaseTemplate
 {
@@ -94,67 +95,67 @@ class IGtNotyPopLoadTemplate extends IGtBaseTemplate
         //设置actionchain
         $actionChain1 = new ActionChain();
         $actionChain1->set_actionId(1);
-        $actionChain1->set_type(ActionChain_Type::refer);
+        $actionChain1->set_type(ActionChainType::refer);
         $actionChain1->set_next(10000);
         //通知
         $actionChain2 = new ActionChain();
         $actionChain2->set_actionId(10000);
-        $actionChain2->set_type(ActionChain_Type::mmsinbox2);
+        $actionChain2->set_type(ActionChainType::mmsinbox2);
         $actionChain2->set_stype("notification");
 
         $f_text = new InnerFiled();
         $f_text->set_key("text");
         $f_text->set_val($this->notyContent);
-        $f_text->set_type(InnerFiled_Type::str);
+        $f_text->set_type(InnerFiledType::str);
         $actionChain2->set_field(0, $f_text);
 
         $f_title = new InnerFiled();
         $f_title->set_key("title");
         $f_title->set_val($this->notyTitle);
-        $f_title->set_type(InnerFiled_Type::str);
+        $f_title->set_type(InnerFiledType::str);
         $actionChain2->set_field(1, $f_title);
 
         $f_logo = new InnerFiled();
         $f_logo->set_key("logo");
         $f_logo->set_val($this->notyIcon);
-        $f_logo->set_type(InnerFiled_Type::str);
+        $f_logo->set_type(InnerFiledType::str);
         $actionChain2->set_field(2, $f_logo);
 
         $f_logoURL = new InnerFiled();
         $f_logoURL->set_key("logo_url");
         $f_logoURL->set_val($this->logoURL);
-        $f_logoURL->set_type(InnerFiled_Type::str);
+        $f_logoURL->set_type(InnerFiledType::str);
         $actionChain2->set_field(3, $f_logoURL);
 
         $f_notifyStyle = new InnerFiled();
         $f_notifyStyle->set_key("notifyStyle");
         $f_notifyStyle->set_val(strval($this->notifyStyle));
-        $f_notifyStyle->set_type(InnerFiled_Type::str);
+        $f_notifyStyle->set_type(InnerFiledType::str);
         $actionChain2->set_field(4, $f_notifyStyle);
 
         $f_isRing = new InnerFiled();
         $f_isRing->set_key("is_noring");
         $f_isRing->set_val(!$this->isBelled ? "true" : "false");
-        $f_isRing->set_type(InnerFiled_Type::bool);
+        $f_isRing->set_type(InnerFiledType::bool);
         $actionChain2->set_field(5, $f_isRing);
 
         $f_isVibrate = new InnerFiled();
         $f_isVibrate->set_key("is_novibrate");
         $f_isVibrate->set_val(!$this->isVibrationed ? "true" : "false");
-        $f_isVibrate->set_type(InnerFiled_Type::bool);
+        $f_isVibrate->set_type(InnerFiledType::bool);
         $actionChain2->set_field(6, $f_isVibrate);
 
         $f_isClearable = new InnerFiled();
         $f_isClearable->set_key("is_noclear");
         $f_isClearable->set_val(!$this->isCleared ? "true" : "false");
-        $f_isClearable->set_type(InnerFiled_Type::bool);
+        $f_isClearable->set_type(InnerFiledType::bool);
         $actionChain2->set_field(7, $f_isClearable);
 
         $actionChain2->set_next(10010);
 
         $actionChain3 = new ActionChain();
         $actionChain3->set_actionId(10010);
-        $actionChain3->set_type(ActionChain_Type::refer);
+        $actionChain3->set_type(ActionChainType::refer);
         $actionChain3->set_next(10020);
 
         //弹框按钮
@@ -168,7 +169,7 @@ class IGtNotyPopLoadTemplate extends IGtBaseTemplate
         //弹框
         $actionChain4 = new ActionChain();
         $actionChain4->set_actionId(10020);
-        $actionChain4->set_type(ActionChain_Type::popup);
+        $actionChain4->set_type(ActionChainType::popup);
         $actionChain4->set_title($this->popTitle);
         $actionChain4->set_text($this->popContent);
         $actionChain4->set_img($this->popImage);
@@ -184,7 +185,7 @@ class IGtNotyPopLoadTemplate extends IGtBaseTemplate
         $appStartUp->set_symbia($this->symbianMark);
         $actionChain5 = new ActionChain();
         $actionChain5->set_actionId(10050);
-        $actionChain5->set_type(ActionChain_Type::appdownload);
+        $actionChain5->set_type(ActionChainType::appdownload);
         $actionChain5->set_name($this->loadTitle);
         $actionChain5->set_url($this->loadUrl);
         $actionChain5->set_logo($this->loadIcon);
@@ -195,7 +196,7 @@ class IGtNotyPopLoadTemplate extends IGtBaseTemplate
 
         $actionChain6 = new ActionChain();
         $actionChain6->set_actionId(100);
-        $actionChain6->set_type(ActionChain_Type::eoa);
+        $actionChain6->set_type(ActionChainType::eoa);
 
         array_push($actionChains, $actionChain1, $actionChain2, $actionChain3, $actionChain4, $actionChain5, $actionChain6);
         return $actionChains;

@@ -62,6 +62,7 @@ define("ALIAS", "ALIAS");
 //bindCidPnDemo();
 //queryCidPnDemo();
 //unbindCidPnDemo();
+
 echo "Start" . PHP_EOL;
 pushMessageToSingle();
 echo "Done" . PHP_EOL;
@@ -76,7 +77,6 @@ echo "Done" . PHP_EOL;
 //unbindAliasAll();
 //stopSendSmsDemo();
 //stoptask();
-
 
 function bindAlias()
 {
@@ -295,7 +295,6 @@ function pushMessageToSingle()
 //    	$template = IGtLinkTemplateDemo();
 //    	$template = IGtNotificationTemplateDemo();
     $template = IGtTransmissionTemplateDemo();
-    var_dump(2,$template,1);die;
     $template = SmsDemo();
     //个推信息体
     $message = new IGtSingleMessage();

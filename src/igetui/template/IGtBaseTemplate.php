@@ -5,9 +5,9 @@ namespace GeTui\igetui\template;
 use GeTui\igetui\DictionaryAlertMsg;
 use GeTui\igetui\IGtAPNPayload;
 use GeTui\igetui\request\PushInfo;
-use GeTui\igetui\SmsContentEntry;
-use GeTui\igetui\SmsInfo;
-use GeTui\igetui\Transparent;
+use GeTui\igetui\request\SmsContentEntry;
+use GeTui\igetui\request\SmsInfo;
+use GeTui\igetui\request\Transparent;
 use RuntimeException;
 
 
