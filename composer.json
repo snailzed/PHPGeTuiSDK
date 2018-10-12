@@ -9,7 +9,7 @@
       "email": "584119837@qq.com"
     }
   ],
-  "minimum-stability": "stable",
+  "minimum-stability": "dev",
   "require": {},
   "autoload": {
     "psr-4": {
