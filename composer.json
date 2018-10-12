@@ -1,22 +1,14 @@
 {
-  "name": "oyxp/getui",
-  "description": "getui class autoload",
-  "keywords": [
-    "php getui sdk",
-    "getui"
-  ],
-  "type": "library",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "snailZED",
-      "email": "584119837@qq.com"
-    }
-  ],
-  "minimum-stability": "stable",
-  "autoload": {
-    "psr-4": {
-      "GeTui\\": "/"
-    }
-  }
+    "name": "snail/php_getui_sdk",
+    "description": "add namespace,autoload",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "oyxp",
+            "email": "584119837@qq.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
 }
