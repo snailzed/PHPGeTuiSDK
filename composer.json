@@ -3,6 +3,7 @@
   "description": "php getui sdk for autoload class",
   "type": "library",
   "license": "MIT",
+  "minimum-stability": "dev",
   "authors": [
     {
       "name": "oyxp",
